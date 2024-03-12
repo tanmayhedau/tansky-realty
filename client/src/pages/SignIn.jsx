@@ -5,7 +5,8 @@ import {
   signInFailure,
   signInSuccess,
   signInStart,
-} from "../redux/user/userSlice.js";
+} from "../redux/user/userSlice";
+import OAuth from "../components/OAuth.jsx";
 
 function SignIn() {
   const [formData, setFormData] = useState({});
@@ -37,7 +38,7 @@ function SignIn() {
         return;
       }
       dispatch(signInSuccess(data));
-      // setFormData({});
+      setFormData({});
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -50,7 +51,7 @@ function SignIn() {
         <input
           type="email"
           placeholder="email"
-          value={formData.email || ""}
+          // value={formData.email || ""}
           className="border p-3 rounded-lg"
           id="email"
           onChange={handleChange}
@@ -58,7 +59,7 @@ function SignIn() {
         <input
           type="password"
           placeholder="password"
-          value={formData.password || ""}
+          // value={formData.password || ""}
           className="border p-3 rounded-lg"
           id="password"
           onChange={handleChange}
@@ -68,6 +69,7 @@ function SignIn() {
           className="border p-3 rounded-lg bg-slate-700 uppercase font-semibold text-white hover:opacity-90 disabled:opacity-80">
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <OAuth/>
       </form>
       <div className="flex gap-2 mt-4">
         <p>Dont have an account?</p>
