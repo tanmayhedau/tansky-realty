@@ -37,7 +37,7 @@ function SignIn() {
         return;
       }
       dispatch(signInSuccess(data));
-      setFormData({});
+      // setFormData({});
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error.message));
